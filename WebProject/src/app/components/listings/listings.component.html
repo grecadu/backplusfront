@@ -1,0 +1,33 @@
+<div class="filters">
+  <label>
+    Bedrooms:
+    <input type="number" [(ngModel)]="filters.bedrooms" (input)="applyFilters()" />
+  </label>
+  <label>
+    Bathrooms:
+    <input type="number" [(ngModel)]="filters.bathrooms" (input)="applyFilters()" />
+  </label>
+  <label>
+    Parking:
+    <input type="number" [(ngModel)]="filters.parking" (input)="applyFilters()" />
+  </label>
+  <label>
+    Price Range:
+    <input type="number" [(ngModel)]="filters.priceRange.min" placeholder="Min" (input)="applyFilters()" />
+    <input type="number" [(ngModel)]="filters.priceRange.max" placeholder="Max" (input)="applyFilters()" />
+  </label>
+</div>
+
+<div class="listings">
+  <div class="card" *ngFor="let listing of filteredListings">
+    <img [src]="listing.ThumbnailURL" [alt]="listing.Title" />
+    <h3>{{ listing.Title }}</h3>
+    <p>{{ listing.Location }}</p>
+    <ul>
+      <li>Bedrooms: {{ listing.Bedrooms }} | Bathrooms: {{ listing.Bathrooms }} </li>
+      <li>Price: ${{ listing['Sale Price'] }}</li>
+    </ul>
+    <button (click)="viewDetails(listing.Id)" class="btn btn-primary">View Details</button>
+
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <a [routerLink]="['/employees']" class="btn btn-primary">Back To List</a>
+  <div *ngIf="employee; else loading">
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Employee Details</h4>
+        <p><strong>First Name:</strong> {{ employee.firstName }}</p>
+        <p><strong>Employee ID:</strong> {{ employee.id }}</p>
+        <p><strong>Department:</strong> {{ employee.department.description || 'N/A'  }}</p>
+        <p><strong>Telephone:</strong> {{ employee.phone  }}</p>
+        <p><strong>Address:</strong> {{ employee.address  }}</p>
+        <p>
+          <strong>Update Department:</strong>
+          <select class="form-select" (change)="onDepartmentChange()" [(ngModel)]="employee.departmentId">
+            <option *ngFor="let department of departments" [value]="department.id">
+              {{ department.description }}
+            </option>
+          </select>
+        </p>
+        <div class="col-md-6">
+          <button class="btn btn-primary mt-2" (click)="updateDepartment()">Update Department</button>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <h4>Hiring Information</h4>
+
+        <p>
+          <strong>Hire Date:</strong><br />
+          <span>{{ employee.hireDate | date: 'longDate' }}</span><br />
+          <span>{{ employee.hireDate | calculateExperience }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <p>Loading employee details...</p>
+  </ng-template>
+</div>

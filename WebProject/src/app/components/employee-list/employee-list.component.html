@@ -1,0 +1,46 @@
+<div class="container mt-5">
+
+  <div class="row">
+    <div class="text-end">
+      <a routerLink="/create-employee" class="btn btn-primary">Create Employee</a>
+    </div>
+    <div *ngIf="employees && employees.length; else noEmployees">
+
+      <div class="col-12 mb-3" *ngFor="let employee of employees">
+        <div class="card w-100">
+          <div class="row g-0 align-items-center">
+            <div class="col-auto">
+              <img src="https://via.placeholder.com/150"
+                   alt="Employee Photo"
+                   class="img-fluid rounded-start"
+                   style="width: 150px; height: 150px; object-fit: cover;">
+            </div>
+
+            <div class="col">
+              <div class="card-body">
+                <div><span class="card-title">{{ employee.firstName }}</span>({{ employee.department.description || 'N/A' }})</div>
+                <p class="card-text mb-1"><strong>Hire Date:</strong> </p>
+                <div><span>{{employee.hireDate | date: 'MMMM d, yyyy':'en-US'}} ({{employee.duration}})</span></div>
+              </div>
+            </div>
+
+
+
+            <div class="col-auto text-end pe-3">
+              <a [routerLink]="['/employees', employee.id]" class="btn btn-primary">View Details</a>
+            </div>
+
+            <div class="col-auto text-end pe-3">
+              <button (click)="deleteEmployee(employee.id)" class="btn btn-danger">
+                <i class="bi bi-x-circle"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <ng-template #noEmployees>
+      <p>Loading employees...</p>
+    </ng-template>
+  </div>

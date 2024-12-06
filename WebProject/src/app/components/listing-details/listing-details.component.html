@@ -1,0 +1,41 @@
+<div class="details-card">
+  <h2>{{ listing?.Title }}</h2>
+  <div class="details-header">
+    <img [src]="listing?.PictureURL" alt="Listing Image" class="details-image" />
+    <div class="details-info">
+      <p><strong>Price:</strong> ${{ listing?.['Sale Price'] | number }}</p>
+      <p><strong>Location:</strong> {{ listing?.Location }}</p>
+      <p><strong>Date Listed:</strong> {{ listing?.DateListed | date }}</p>
+    </div>
+  </div>
+  <div class="details-body">
+    <p><strong>Bedrooms:</strong> {{ listing?.Bedrooms }}</p>
+    <p><strong>Bathrooms:</strong> {{ listing?.Bathrooms }}</p>
+    <p><strong>Parking:</strong> {{ listing?.Parking }}</p>
+    <p><strong>Sqft:</strong> {{ listing?.Sqft | number }}</p>
+    <p><strong>Year Built:</strong> {{ listing?.YearBuilt }}</p>
+    <p><strong>Description:</strong> {{ listing?.Description }}</p>
+  </div>
+  <div class="contact-form">
+    <h3>Contact Agent</h3>
+    <form>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input id="firstName" type="text" class="form-control" placeholder="Enter your first name" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" class="form-control" placeholder="Enter your email" />
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input id="phone" type="tel" class="form-control" placeholder="Enter your phone number" />
+      </div>
+      <div class="form-group">
+        <label for="comments">Comments</label>
+        <textarea id="comments" rows="3" class="form-control" placeholder="Write a comment"></textarea>
+      </div>
+      <button type="button" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

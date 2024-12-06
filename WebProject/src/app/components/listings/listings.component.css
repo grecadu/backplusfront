@@ -1,0 +1,29 @@
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+  .filters label {
+    display: flex;
+    flex-direction: column;
+  }
+
+.listings {
+  display: grid;
+/*  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+*/  gap: 20px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+  .card img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
